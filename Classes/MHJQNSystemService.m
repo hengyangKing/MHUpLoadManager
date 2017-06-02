@@ -48,7 +48,7 @@
     QNUploadManager *upManager = [[self class] shareManager];
     //显示上传的百分比
     QNUploadOption *uploadOption = [[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
-        MHJLog(@"percent == %.2f", percent);
+        NSLog(@"percent == %.2f", percent);
         
     } params:nil checkCrc:NO cancellationSignal:nil];
     
@@ -63,7 +63,7 @@
             {
                 [mDic setObject:[NSNumber numberWithInteger:tokenModel.type] forKey:@"type"];
             }
-            MHJLog(@"上传成功返回Dic%@",mDic);
+            NSLog(@"上传成功返回Dic%@",mDic);
             if (success) {
                 success(mDic);
             }
@@ -104,7 +104,7 @@
         } else {
 
             currentIndex ++;
-            MHJLog(@"currentIndex == %ld", (unsigned long)currentIndex);
+            NSLog(@"currentIndex == %ld", (unsigned long)currentIndex);
             [MHJQNSystemService MHJ_uploadImage: imageArray[currentIndex]andTokenModel:modelArray[currentIndex] progress:nil success:weakHelper.singleSuccessBlock failure:weakHelper.singleFailureBlock];
         }
     };
@@ -200,7 +200,7 @@
     QNUploadManager *upManager = [[self class] shareManager];
 //    NSDictionary*params=[MHJQNUploadHelper SetUpAudioParamsWith:tokenModel];
     QNUploadOption *uploadOption=[[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
-        MHJLog(@"percent == %.2f AND KEY==%@", percent,key);
+        NSLog(@"percent == %.2f AND KEY==%@", percent,key);
         if (progress)
         {
             progress(percent);
@@ -208,12 +208,12 @@
     } params:nil checkCrc:NO cancellationSignal:nil];
     
         [upManager putData:mediaData key:tokenModel.key token:tokenModel.token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-            MHJLog(@"resp:::%@",resp);
-            MHJLog(@"info:::%@",info);
+            NSLog(@"resp:::%@",resp);
+            NSLog(@"info:::%@",info);
             if (info.statusCode==200&&resp)
             {
                 NSString *url = [NSString stringWithFormat:@"%@/%@", tokenModel.bucket, resp[@"key"]];
-                MHJLog(@"url === %@", url);
+                NSLog(@"url === %@", url);
                 NSMutableDictionary *mDic=[NSMutableDictionary dictionary];
                 //            //向词典中动态添加数据
                 [mDic setObject:key forKey:@"resource"];
@@ -221,7 +221,7 @@
                 {
                     [mDic setObject:[NSNumber numberWithInteger:tokenModel.type] forKey:@"type"];
                 }
-                MHJLog(@"上传成功返回Dic%@",mDic);
+                NSLog(@"上传成功返回Dic%@",mDic);
                 if (success) {
                     success(mDic);
                 }
