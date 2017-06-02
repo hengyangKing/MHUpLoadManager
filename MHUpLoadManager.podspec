@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "MHUpLoadManager"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "MHUpLoadManager."
 
   # This description is used to generate tags and improve search results.
@@ -90,7 +90,7 @@ Pod::Spec.new do |s|
   #
 
   s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.dependency 'MHQiNiuHttpsSDK', '~> 0.0.1'
+  s.dependency 'MHQiNiuHttpsSDK'
 
   # s.exclude_files = "Classes/Exclude"
 
