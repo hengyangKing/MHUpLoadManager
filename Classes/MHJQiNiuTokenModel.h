@@ -36,7 +36,7 @@
 /**
  *  上传任务类型
  */
-@property(nonatomic,assign)TakeQiNiuTokenType type;
+@property(nonatomic,assign)NSInteger type;
 
 
 
